@@ -7,12 +7,14 @@ All csv files and programming support are from [KeithGalli](https://github.com/K
 
 # SF-Salary
 
-## In this Folder are some other simple Projects I create with Jupyter
-
 #### The Data which Im working with are all from [Kaggle](http://kaggle.com/)
 
 # E-Commerce
 
-## In this Folder are some other simple Projects I create with Jupyter
-
 #### The Data which Im working with are all from [Kaggle](http://kaggle.com/)
+
+# Matplotlib-Basics
+
+#### Easy examples to learn Matplotlib with jupyter
+
+
