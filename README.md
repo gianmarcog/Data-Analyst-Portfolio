@@ -17,4 +17,8 @@ All csv files and programming support are from [KeithGalli](https://github.com/K
 
 #### Easy examples to learn Matplotlib with jupyter
 
+# Seaborn-Basics
+
+#### Easy examples to learn Seaborn with jupyter
+
 
