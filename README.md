@@ -24,9 +24,9 @@ All csv files and programming support are from [KeithGalli](https://github.com/K
 
 # Plotly-Cufflinks
 
-#### Easy examples to learn Seaborn with jupyter
+#### Easy examples to learn lotly and Cufflinks with jupyter
 
 # Geographical_Plotting
 
-#### Easy examples to learn Seaborn with jupyter
+#### Easy examples to learn Geographical Plotting with jupyter
 
