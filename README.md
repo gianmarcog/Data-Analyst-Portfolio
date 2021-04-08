@@ -37,3 +37,7 @@ All csv files and programming support are from [KeithGalli](https://github.com/K
 # Financial_Data_Project
 
 #### The Data which Im working with are all from pandas_datareader API for Major banks
+
+# MachineLearning-Projects
+
+#### This folder do have different kinds of machine learning processes
