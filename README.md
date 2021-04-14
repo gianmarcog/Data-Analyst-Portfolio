@@ -5,6 +5,10 @@ it's a simple project to learn JupyterNotebook.
 
 All csv files and programming support are from [KeithGalli](https://github.com/KeithGalli)
 
+# Harry Potter
+
+#### The Data for my Harry Potter exercises I got all from here [Kaggle](https://www.kaggle.com/zez000/characters-in-harry-potter-books)
+
 # SF-Salary
 
 #### The Data which Im working with are all from [Kaggle](http://kaggle.com/)
