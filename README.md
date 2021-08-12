@@ -17,6 +17,10 @@ All csv files and programming support are from [KeithGalli](https://github.com/K
 
 #### The Data which Im working with are all from [Kaggle](http://kaggle.com/)
 
+# Google App Rating
+
+#### Data Analytics example about Google App Store Ratings with are all from [Kaggle](http://kaggle.com/)
+
 # Matplotlib-Basics
 
 #### Easy examples to learn Matplotlib with jupyter
