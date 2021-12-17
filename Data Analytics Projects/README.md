@@ -23,10 +23,6 @@
 
 #### The Data for my Udemy Courses Dataset I got all from here [Kaggle](https://www.kaggle.com/)
 
-# MachineLearning-Projects
-
-#### This folder do have different kinds of machine learning processes
-
 # Uber Datat Analysis
 
 #### On this Project  I simple analysis some Uber datas. The datas come from this Google Drive [Link](https://drive.google.com/file/d/1emopjfEkTt59jJoBH9L9bSdmlDC4AR87/view)
