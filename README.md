@@ -1,3 +1,3 @@
 # Portfolio
 
-This is my perrsonally Data Analyst Portfolio
+This is my personally Data Analyst Portfolio
