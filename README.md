@@ -24,3 +24,5 @@
    - Udemy_Course_Dataset
    - Weather Analysis
 
+- **Web Scraping**
+     - Amazon
