@@ -26,3 +26,7 @@
 
 - **Web Scraping**
      - Amazon
+     - Pararius
+
+- **Data Transformation**
+     - Survey - Python
