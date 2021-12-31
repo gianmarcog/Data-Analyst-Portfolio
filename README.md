@@ -30,3 +30,6 @@
 
 - **Data Transformation**
      - Survey - Python
+
+- **Data Cleaning**
+     - DataFrame
