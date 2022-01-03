@@ -33,3 +33,4 @@
 
 - **Data Cleaning**
      - DataFrame
+     - Covid-19
