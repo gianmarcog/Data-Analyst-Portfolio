@@ -7,6 +7,8 @@
    - Numpy
    - Panda
 
+- **SQL for Data Analyst**
+   - Forward filling rows
 
 - **Data Visualisation**
      - Google Data Studio
