@@ -15,6 +15,7 @@
 
 
 - **Data Analytics Projects**
+   - Spotify Data
    - 911-Call-Project
    - Extract API Data
    - Google_App_Rating
