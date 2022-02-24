@@ -30,3 +30,7 @@
 # Weather Analysis
 
 #### Project where I simple analysis some weather datas. The datas come from this Google Drive [Link](https://drive.google.com/file/d/1JvD4Ss2yS3d9X36YkWqmqZXLamNWLSFJ/view)
+
+# Spotify
+
+#### Data Analytics example about Spotify with data from [Kaggle](https://www.kaggle.com/lehaknarnauli/spotify-datasets?select=artists.csv)
