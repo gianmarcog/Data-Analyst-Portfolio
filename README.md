@@ -11,6 +11,7 @@
    - Forward filling rows
 
 - **Data Visualisation**
+     - Tableau
      - Google Data Studio
 
 
