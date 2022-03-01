@@ -17,16 +17,10 @@
 
 - **Data Analytics Projects**
    - Spotify Data
-   - 911-Call-Project
-   - Extract API Data
-   - Google_App_Rating
-   - Harry Potter/Characters
    - Netflix-Dataset
-   - Retail-Store-Data
-   - Seaborn-Basics
-   - Uber Data Analysis
-   - Udemy_Course_Dataset
-   - Weather Analysis
+   - Extract API Data
+   - Harry Potter Characters
+   - etc.
 
 - **Web Scraping**
      - Amazon
