@@ -22,6 +22,10 @@
    - Harry Potter Characters
    - etc.
 
+- **Excel**
+   - Data Cleaning 
+
+
 - **Web Scraping**
      - Amazon
      - Pararius
