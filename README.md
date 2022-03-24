@@ -5,10 +5,11 @@
 - **Python for Data Analyst**
    - Basic
    - Numpy
-   - Panda
+   - Pandas
 
 - **SQL for Data Analyst**
    - Forward filling rows
+   - Creating a Database and queries examples 
 
 - **Data Visualisation**
      - Tableau
