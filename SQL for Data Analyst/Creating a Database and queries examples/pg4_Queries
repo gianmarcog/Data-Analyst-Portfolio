@@ -1,0 +1,694 @@
+-- Select Queries
+
+SELECT * FROM directors;
+
+SELECT last_name, nationality FROM directors;
+
+
+-- Where Clauses
+
+/*
+SELECT columnname FROM tablename
+WHERE columnname = 'value';
+*/
+
+SELECT * FROM movies
+WHERE age_certificate = '15';
+
+SELECT * FROM movies
+WHERE age_certificate = '15'
+AND movie_lang = 'Chinese';
+
+SELECT * FROM movies
+WHERE age_certificate = '15'
+OR movie_lang = 'Chinese';
+
+SELECT * FROM movies
+WHERE movie_lang = 'English'
+AND age_certificate = '15'
+AND director_id = 27;
+
+-- Logical Operators (>, >=, <, <=)
+
+SELECT movie_name, movie_length FROM movies
+WHERE movie_length > 120;
+
+SELECT movie_name, movie_length FROM movies
+WHERE movie_length >= 120;
+
+SELECT movie_name, movie_length FROM movies
+WHERE movie_length < 120;
+
+SELECT movie_name, movie_length FROM movies
+WHERE movie_length <= 120;
+
+SELECT * FROM movies
+WHERE release_date < '2000-01-01';
+
+-- In, Not In
+
+/*
+SELECT columnname1, columnname2 FROM tablename
+WHERE columnname3 IN ('value1', 'value2');
+
+SELECT columnname1, columnname2 FROM tablename
+WHERE columnname3 NOT IN ('value1', 'value2');
+*/
+
+SELECT first_name, last_name FROM actors
+WHERE first_name IN ('Bruce','John');
+
+SELECT first_name, last_name FROM actors
+WHERE first_name IN ('Bruce','John','Peter');
+
+SELECT first_name, last_name FROM actors
+WHERE first_name NOT IN ('Bruce', 'John', 'Peter');
+
+SELECT actor_id, first_name, last_name FROM actors
+WHERE actor_id IN (2,3,4,5,6,8);
+
+SELECT actor_id, first_name, last_name FROM actors
+WHERE actor_id NOT IN (2,3,4,5,6,8);
+
+-- USING LIKE with % and _
+
+/*
+SELECT columnname FROM table
+WHERE columnname LIKE '%pattern%';
+
+SELECT columnname FROM table
+WHERE columnname LIKE '_pattern_';
+*/
+
+SELECT * FROM actors
+WHERE first_name LIKE 'P%';
+
+SELECT * FROM actors
+WHERE first_name LIKE 'Pe_';
+
+SELECT * FROM actors
+WHERE first_name LIKE '%rl%';
+
+SELECT * FROM actors
+WHERE first_name LIKE '__rl__';
+
+-- selecting data where a column iis between 2 values
+
+/*
+SELECT columnname1, columnname2 FROM tablename
+WHERE columnname3 BETWEEN value1 AND VALUE2;
+*/
+
+SELECT * FROM movies;
+
+SELECT movie_name, release_date FROM movies
+WHERE release_date BETWEEN '1995-01-01' AND '1999-12-31';
+
+SELECT movie_name, movie_length FROM movies
+WHERE movie_length BETWEEN 90 AND 120;
+
+SELECT movie_name, movie_lang FROM movies
+WHERE movie_lang BETWEEN 'E' AND 'P';
+
+SELECT movie_name, movie_lang FROM movies
+WHERE movie_lang BETWEEN 'E' AND 'Portuguese';
+
+-- Ordering the results returned
+
+/*
+SELECT columnname1, columnname2 FROM tablename
+ORDER BY columnname3;
+*/
+
+SELECT * FROM actors;
+
+SELECT first_name, last_name, date_of_birth FROM actors
+ORDER BY first_name ASC;
+
+SELECT first_name, last_name, date_of_birth FROM actors
+ORDER BY first_name DESC;
+
+SELECT first_name, last_name, date_of_birth FROM actors
+ORDER BY date_of_birth;
+
+SELECT first_name, last_name, date_of_birth FROM actors
+ORDER BY date_of_birth DESC;
+
+SELECT first_name, last_name, date_of_birth FROM actors
+WHERE gender = 'F'
+ORDER BY date_of_birth DESC;
+
+-- LIMITING the number of records return
+
+/*
+SELECT columnname1, columnname2 FROM tablename
+LIMIT N;
+*/
+
+SELECT * FROM movie_revenues
+ORDER BY revenue_id
+LIMIT 5 OFFSET 2;
+
+-- Using Fetch
+
+/*
+SELECT column1 FROM table1
+FETCH FIRST 1 ROW ONLY;
+*/
+
+SELECT movie_id, movie_name FROM movies
+FETCH FIRST 1 ROW ONLY;
+
+SELECT movie_id, movie_name FROM movies
+FETCH FIRST 10 ROW ONLY;
+
+SELECT movie_id, movie_name FROM movies
+OFFSET 8 ROWS
+FETCH FIRST 10 ROW ONLY;
+
+-- Dealing with NULL values
+
+/*
+SELECT * FROM tablename
+WHERE columnname IS NULL;
+
+SELECT * FROM tablename
+WHERE columnnameIS NOT NULL;
+*/
+
+SELECT * FROM actors
+WHERE date_of_birth IS NULL;
+
+SELECT * FROM movie_revenues
+WHERE domestic_takings IS NOT NULL
+ORDER BY domestic_takings DESC;
+
+SELECT * FROM movie_revenues
+WHERE international_takings IS NULL;
+
+-- Setting a column name alias
+
+/*
+SELECT columname A new_columname FROM tablename;
+*/
+
+SELECT last_name AS surname FROM directors;
+
+SELECT last_name AS surname FROM directors
+WHERE last_name LIKE 'A%'
+ORDER BY surname;
+
+-- Using concatenate
+
+/*
+SELECT 'string1' || 'string2' AS new_string;
+
+SELECT CONCAT(column1, column2) AS new_column FROM tablename;
+
+SELECT CONCAT_WS('', column1, column2) AS new_column FROM tablename;
+*/
+
+SELECT 'concat' || 'together' AS new_string;
+SELECT 'concat' || ' ' || 'together' AS new_String;
+
+SELECT CONCAT(first_name, last_name) AS full_name FROM actors;
+SELECT CONCAT(first_name,':', last_name) AS full_name FROM actors;
+
+SELECT CONCAT_WS(' ',first_name, last_name, date_of_birth) AS full_name FROM actors;
+
+-- Aggregate Functions : COUNT
+
+/*
+SELECT COUNT(columname) FROM tablename;
+*/
+
+SELECT COUNT (*) FROM movie_revenues;
+
+SELECT COUNT(international_takings) FROM movie_revenues;
+
+SELECT COUNT(*) FROM movies
+WHERE movie_lang = 'English';
+
+-- Aggregate Functions : SUM
+
+/*
+SELECT SUM(columname) FROM tablename;
+*/
+
+SELECT SUM(domestic_takings) FROM movie_revenues;
+
+SELECT SUM(domestic_takings) FROM movie_revenues
+WHERE domestic_takings > 100.0;
+
+SELECT SUM(movie_length) FROM movies
+WHERE movie_lang = 'Chinese';
+
+-- Aggregate Functions : MIN and MAX
+
+/*
+SELECT MAX(columname) FROM tablename;
+SELECT MIN(columname) FROM tablename;
+*/
+
+SELECT MAX(movie_length) FROM movies;
+SELECT MIN(movie_length) FROM movies;
+
+SELECT MIN(movie_length) FROM movies
+WHERE movie_lang = 'Japanese';
+
+SELECT MAX(release_date) FROM movies;
+SELECT MIN(release_date) FROM movies;
+
+SELECT MAX(movie_name) FROM movies;
+SELECT MIN(movie_name) FROM movies;
+
+-- Aggregate Function : AVG
+
+/*
+SELECT AVG(columname) FROM tablename;
+*/
+
+SELECT AVG(movie_length) FROM movies;
+
+SELECT AVG(movie_length) FROM movies
+WHERE age_certificate = '18';
+
+-- Grouping data
+
+/*
+SELECT column1, AGGFUN(column2) FROM tablename
+GROUP BY column1;
+*/
+
+SELECT COUNT(movie_lang) FROM movies;
+
+SELECT movie_lang, COUNT(movie_lang) FROM movies
+GROUP BY movie_lang;
+
+SELECT movie_lang, AVG(movie_length) FROM movies
+GROUP BY movie_lang;
+
+SELECT movie_lang, age_certificate, AVG(movie_length) FROM movies
+GROUP BY movie_lang, age_certificate;
+
+SELECT movie_lang, age_certificate, AVG(movie_length) FROM movies
+WHERE movie_length > 120
+GROUP BY movie_lang, age_certificate;
+
+SELECT movie_lang, age_certificate, AVG(movie_length) FROM movies
+WHERE age_certificate = '15'
+GROUP BY movie_lang, age_certificate;
+
+-- HAVING Clauses
+
+/*
+SELECT column1, AGGFUN(column2) FRROM tablename
+GROUP BY column1
+HAVING AGGFUN(column3) = value;
+*/
+
+SELECT movie_lang, COUNT(movie_lang) FROM movies
+GROUP BY movie_lang
+HAVING COUNT(movie_lang) > 1;
+
+SELECT movie_lang, COUNT(movie_lang) FROM movies
+WHERE movie_length > 120
+GROUP BY movie_lang
+HAVING COUNT(movie_lang) > 1;
+
+-- Using Mathematical Operators
+
+/*
++ - / * %
+*/
+
+SELECT 1 + 4 As addition;
+SELECT 8 - 3 As subtraction;
+SELECT 35 / 7 AS division;
+SELECT 3 * 5 AS multiplication;
+SELECT 7 % 2 AS modulus;
+
+SELECT * FROM movie_revenues;
+
+SELECT movie_id, (domestic_takings + international_takings) AS total_takings FROM movie_revenues;
+
+-- INNER JOINS
+
+/*
+SELECT tabl1.column1, table1.column2, table2.column1 FROM table1
+INNER JOIN table 2 ON table1.column3 = table2.column3;
+*/
+
+SELECT * FROM directors;
+SELECT * FROM movies;
+
+INSERT INTO directors (first_name, last_name, date_of_birth, nationality)
+VALUES ('Christopher', 'Nolan', '1970-07-30', 'British');
+
+SELECT directors.director_id, directors.first_name, directors.last_name, movies.movie_name
+FROM directors
+INNER JOIN movies ON directors.director_id = movies.director_id
+WHERE movies.movie_lang = 'Japanese'
+ORDER BY movies.movie_length;
+
+SELECT d.director_id, d.first_name, d.last_name, mo.movie_name  FROM directors d 
+JOIN movies mo ON d.director_id = mo.director_id
+WHERE mo.movie_lang = 'Japanese'
+ORDER BY mo.movie_length;
+
+SELECT mo.movie_name, mr.domestic_takings, mr.international_takings FROM movies mo
+JOIN movie_revenues mr ON mo.movie_id = mr.movie_id
+ORDER BY mr.domestic_takings;
+
+/*
+SELECT t1.column1, t1.column2, t2.column1 FROM table1 t1
+JOIN table2 t2 USING (column3);
+*/
+
+SELECT mo.movie_name, mr.domestic_takings FROM movies mo
+JOIN movie_revenues mr USING (movie_id)
+WHERE mo.age_certificate IN ('12','15','18')
+ORDER BY mr.domestic_takings DESC;
+
+-- LEF JOINS
+
+/*
+SELECCT t1.column1, t1.column2, t2.column1 FROM table1 t1
+LEFT JOIN table t2 ON t1.column3 = t2.column3;
+*/
+
+SELECT d.director_id, d.first_name, d.last_name, mo.movie_name FROM directors d
+LEFT JOIN movies mo ON d.director_id = mo.director_id;
+
+-- RIGHT JOINS
+
+/*
+SELECT t1.column1, t1.column2, t2.column1 FROM table1 t1
+RIGHT JOIN table t2 ON t1.column3 = t2.column3;
+*/
+
+SELECT d.director_id, d.first_name, d.last_name, mo.movie_name FROM movies mo
+RIGHT JOIN directors  d ON d.director_id = mo.director_id;
+
+SELECT d.director_id, d.first_name, d.last_name, mo.movie_name FROM movies mo
+RIGHT JOIN directors d ON d.director_id = mo.director_id
+WHERE mo.age_certificate = '18';
+
+-- FULL OUTER JOINS
+
+/*
+SELECT t1.column1, t1.column2, t2.column1 FROM table1 t1
+FULL JOIN table2 ON t1.column3 = t2.column3;
+*/
+
+SELECT d.director_id, d.first_name, d.last_name, mo.movie_name FROM directors d
+FULL JOIN movies mo ON d.director_id = mo.director_id;
+
+SELECT d.director_id, d.first_name, d.last_name, mo.movie_name FROM directors d
+FULL JOIN movies mo ON d.director_id = mo.director_id
+WHERE mo.movie_lang IN ('German','Korean')
+ORDER BY d.last_name;
+
+-- Joining more then two tables
+/*
+SELECT t1.column, t2.column t3.column FROM table1 t1
+JOIN table2 t2 ON t1.column = t2.column
+JOIN table3 t3 ON c3.column = t2.column;
+*/
+
+SELECT d.first_name, d.last_name, mo.movie_name, mr.international_takings, mr.domestic_takings
+FROM directors d
+JOIN movies mo ON d.director_id = mo.director_id
+JOIN movie_revenues mr ON mr.movie_id = mo.movie_id;
+
+SELECT ac.first_name, ac.last_name, mo.movie_name FROM actors ac
+JOIN movies_actors ma ON ac.actor_id = ma.actor_id
+JOIN movies mo ON mo.movie_id = ma.movie_id
+WHERE mo.movie_lang = 'English'
+ORDER BY mo.movie_name;
+
+SELECT d.first_name, d.last_name, mo.movie_name, ac.first_name, ac.last_name,
+mr.domestic_takings, mr.international_takings FROM directors d
+JOIN movies mo ON d.director_id = mo.director_id
+JOIN movies_actors ma ON ma.movie_id = mo.movie_id
+JOIN actors ac ON ac.actor_id = ma.actor_id
+JOIN movie_revenues mr ON mr.movie_id = mo.movie_id;
+
+-- UNION
+
+/*
+SELECT column1, column2 FROM table1
+UNION
+SELECT column1, column2 FROM table2
+*/
+
+SELECT first_name, last_name FROM directors
+UNION
+SELECT first_name, last_name FROM actors;
+
+SELECT first_name, last_name, date_of_birth FROM directors
+WHERE nationality = 'America'
+UNION
+SELECT first_name, last_name, date_of_birth FROM actors
+WHERE gender = 'F'
+ORDER BY first_name;
+
+-- UNION ALL
+
+/*
+SELECT column1, column2 FROM table1
+UNION ALL
+SELECT column1, column2 FROM table2;
+*/
+
+SELECT first_name FROM directors
+UNION
+SELECT first_name FROM actors
+ORDER BY first_name;
+
+SELECT first_name FROM directors
+UNION ALL
+SELECT first_name FROM actors
+ORDER BY first_name
+
+-- INTERSECT
+
+/*
+SELECT column1 FROM table1
+INTERSECT SELECT column1 FROM table2;
+*/
+
+SELECT first_name FROM directors
+WHERE nationality = 'American'
+INTERSECT
+SELECT first_name FROM actors
+ORDER BY first_name;
+
+-- EXCEPT
+
+/*
+SELECT column1 FROM table1
+EXCEPT
+SELECT column1 FROM table2;
+*/
+
+SELECT first_name FROM directors
+WHERE nationality = 'American'
+EXCEPT
+SELECT first_name FROM actors
+ORDER BY first_name;
+
+-- Uncorrelated Subqueries
+
+SELECT movie_name, movie_length FROM movies
+WHERE movie_length >
+(SELECT AVG(movie_length) FROM movies);
+
+SELECT movie_name, movie_length FROM movies
+WHERE movie_length > 126.13;
+
+SELECT AVG(movie_length) FROM movies;
+
+SELECT first_name, last_name, date_of_birth FROM directors
+WHERE date_of_birth >
+(SELECT date_of_birth FROM actors
+WHERE first_name = 'Tom'
+AND last_name= 'Cruise');
+
+SELECT date_of_birth FROM actors
+WHERE first_name = 'Tom'
+AND last_name = 'Cruise';
+
+SELECT movie_name FROM movies
+WHERE movie_id IN
+(SELECT movie_id FROM movie_revenues
+WHERE international_takings > domestic_takings);
+
+SELECT mo.movie_id, mo.movie_name, d.first_name, d.last_name FROM movies mo
+JOIN directors d ON mo.director_id = d.director_id
+WHERE mo.movie_id IN
+(SELECT movie_id FROM movie_revenues
+WHERE international_takings > domestic_takings);
+
+-- Correlated Subqueris
+
+SELECT d1.first_name, d1.last_name, d1.date_of_birth
+FROM directors d1
+WHERE d1.date_of_birth =
+(SELECT MIN(date_of_birth) FROM directors d2
+WHERE d2.nationality = d1.nationality);
+
+SELECT mo1.movie_name, mo1.movie_lang, mo1.movie_length FROM movies mo1
+WHERE mo1.movie_length =
+(SELECT MAX(movie_length) FROM movies mo2
+WHERE mo2.movie_lang = mo1.movie_lang);
+
+-- UPPER and LOWER Functions
+
+/*
+SELECT UPPER('string');
+
+SELECT LOWER('string');
+
+SELECT(column_name) FROM table_name;
+
+SELECT LOWER(column_name) FROM table_name;
+*/
+
+SELECT UPPER('stop shouting');
+
+SELECT first_name, UPPER(last_name) AS last_name FROM actors;
+
+SELECT LOWER('stop ShOuTiNg');
+
+SELECT LOWER(movie_name) FROM movies;
+
+SELECT movie_name FROM movies;
+
+-- INITCAP String Function
+
+/*
+SELECT INITCAP('example string');
+
+SELECT INITCAP(column_name) FROM table_name;
+*/
+
+SELECT INITCAP('eXaMpLe StRiNg');
+
+SELECT movie_name FROM movies;
+
+SELECT INITCAP(movie_name) FROM movies;
+
+-- LEFT AND RIGHT String Functions
+
+/*
+SELECT LEFT('string', int);
+
+SELECT LEFT(column_name, int) FROM table_name;
+
+SELECT RIGHT('string' int);
+
+SELECT RIGHT(column_name, init) FROM table_name;
+*/
+
+SELECT LEFT('string', 3);
+
+SELECT LEFT(movie_name, 5) FROM movies;
+
+SELECT RIGHT('example', 2);
+
+SELECT RIGHT(first_name, 2) FROM actors;
+
+SELECT * FROM actors;
+
+-- REVERSE Function
+
+/*
+SELECT REVERSE('string');
+
+SELECT REVERSE(column_name) FROM table_name;
+*/
+
+SELECT REVERSE('reverse');
+
+SELECT movie_name, REVERSE(movie_name) FROM movies;
+
+-- SUBSTRING Function
+
+/*
+SELECT SUBSTRING ('string', from, count);
+
+SELECT SUBSTRING(column, from, count) FROM table_name;
+*/
+
+SELECT SUBSTRING('long string', 5, 3);
+
+SELECT first_name, SUBSTRING(first_name, 3, 4) FROM actors;
+
+-- REPLACE Function
+
+/*
+SELECT REPLACE('source_string','old_string','new_string');
+
+SELECT REPLACE(column_name, 'old_string', 'new_string');
+
+UPDATE table_name
+SET column_name = REPLACE(column_name, 'old_string', 'new_string')
+WHERE column_name = 'value';
+*/
+
+SELECT REPLACE('a cat plays with another cat', 'cat', 'dog');
+
+SELECT * FROM actors;
+
+SELECT first_name, last_name, REPLACE(gender, 'M', 'Male') FROM actors;
+
+SELECT * FROM directors;
+
+UPDATE directors
+SET nationality = REPLACE(nationality, 'Brit', 'Engl')
+WHERE nationality = 'British';
+
+SELECT * FROM directors;
+
+-- SPLIT_PART Function
+
+/*
+SELECT SPLIT_PART('string','delimiter', field_number);
+
+SELECT SPLIT_PART(column_name, 'delimiter', field_number) FROM table_name;
+*/
+
+SELECT SPLIT_PART('first_name.last_name@gmail.com', '.',3);
+
+SELECT movie_name, SPLIT_PART(movie_name,' ',1) AS first_word,
+SPLIT_PART(movie_name,' ',2) AS second_word
+FROM movies;
+
+-- Using Casting to apply String Functions to Non String Data Types
+
+/*
+SELECT column_name::DATATYPE FROM table_name;
+*/
+
+SELECT * FROM directors;
+
+SELECT date_of_birth::TEXT FROM directors;
+
+SELECT SPLIT_Part(date_of_birth::TEXT,'-',3) FROM directors;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
