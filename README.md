@@ -9,7 +9,7 @@
 
 - **SQL for Data Analyst**
    - Forward filling rows
-   - Creating a Database and queries examples 
+   - Creating a Database and queries examples (PostgreSQL)
 
 - **Data Visualisation**
      - Tableau
